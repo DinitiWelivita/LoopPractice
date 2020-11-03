@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author John Word
+ * @author 802967
  */
 public class LoopPractice extends JPanel implements KeyListener, MouseListener {
     
@@ -38,17 +38,47 @@ public class LoopPractice extends JPanel implements KeyListener, MouseListener {
        
         this.setBackground(Color.CYAN);
         
-        g.setColor(Color.GREEN);
-        g.fillOval(10,10,100,200);
+        g.setColor(Color.RED);
+       // g.fillOval(10,10,100,200);
         
         //CODE GOES HERE!
+        
+        for (int y = 0; y<400; y+=50) {
+            //this is slower
+            g.drawLine (0,y,400,y);
+            if (y==200) continue;
+            for (int x = 0; x<400;x +=50) {
+               //this is faster
+               if (x==50) continue;
+                g.fillOval(x,y,50,50);
+            }
+            
+            for (int i=0; i<10; i++) {
+                if (i<3 && i>7) continue;
+                for (int j=0; j<10; j++) {
+                    if (j%2==1) continue;
+                     g.setColor(new Color((float)Math.random(),(float)Math.random(),(float)Math.random()));
+                   g.fillRect(j*50, i*50, 50, 50);
+                }
+            }
+            
+            
+        }
+        
+       /* for (int i=0; i<50; i++) {
+            int x = i*50;
+            int y = i*50;
+            g.fillOval(x,y, 50, 50);
+        }
+        
+        
         
         int number = 1;
         while (number <= 20) {
             System.out.println(number);
             number++; //number+=1
         }
-        
+       
         number = 7;
         int count = 0;
         while (number <= 500) {
@@ -80,7 +110,7 @@ public class LoopPractice extends JPanel implements KeyListener, MouseListener {
             }
             
         }
-        
+      */  
     }
      
     private class ScheduleTask extends TimerTask {
